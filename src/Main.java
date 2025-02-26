@@ -1,26 +1,31 @@
 import java.util.Scanner;
 
-public class Main {
-
+public class Masa_coporal {
     public static void main(String[] args) {
-        Scanner teclado = new Scanner (System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        int n1, n2;
-        double raiz1, raiz2;
+        System.out.print("Ingrese su peso (en kg): ");
+        double peso = scanner.nextDouble();
 
-        do{
-            System.out.println("ingrese el valor de n1");
-            n1 = teclado.nextInt();
-        } while (n1<=0);
-        do{
-            System.out.println("ingrese el valor de n2");
-            n2 = teclado.nextInt();
-        }while (n2<=0);
-        raiz1 = Math.sqrt(n1);
-        raiz2 = Math.sqrt(n2);
+        System.out.print("Ingrese su altura (en metros): ");
+        double altura = scanner.nextDouble();
 
-        System.out.println("la raiz de n1 es" + raiz1);
-        System.out.println("la raiz de n2 es" + raiz2);
+        double imc = calcularIMC(peso, altura);
 
+        System.out.println("Su IMC es: " + imc);
+
+        if (imc < 18.5) {
+            System.out.println("Usted tiene un peso bajo.");
+        } else if (imc < 25) {
+            System.out.println("Usted tiene un peso normal.");
+        } else if (imc < 30) {
+            System.out.println("Usted tiene sobrepeso.");
+        } else {
+            System.out.println("Usted tiene obesidad.");
+        }
+    }
+
+    public static double calcularIMC(double peso, double altura) {
+        return peso / Math.pow(altura, 2);
     }
 }
